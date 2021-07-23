@@ -1,0 +1,5 @@
+CHANGES
+
+July 23 2021
+
+* Significant architectural rewrite to move to native terraform for the resource creation migrating away from Serverless framework dependencies and local-exec.
