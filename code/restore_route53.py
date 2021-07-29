@@ -6,7 +6,8 @@ from datetime import datetime
 from botocore.exceptions import ClientError
 import route53_utils
 
-bucket_name = os.environ['BUCKET']
+bucket_name = os.environ.get("S3_BUCKET_NAME", None)
+
 s3 = boto3.client('s3')
 route53 = boto3.client('route53')
 

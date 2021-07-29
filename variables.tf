@@ -1,13 +1,17 @@
-variable "aws_profile" {
-  description = "The AWS profile from the credentials file that will be used to deploy this solution."
-  default     = "default"
+variable "project" {
   type        = string
+  description = "The Project name"
 }
 
-variable "region" {
-  description = "The AWS region the solution will be deployed to"
+variable "environment" {
   type        = string
-  default     = "us-east-1"
+  description = "The environment name"
+}
+
+variable "component" {
+  type        = string
+  description = "The TF component name"
+  default     = "cdoc"
 }
 
 variable "interval" {
@@ -16,8 +20,8 @@ variable "interval" {
   default     = "120"
 }
 
-variable "retention_period" {
-  description = "The time, in days, the backup is stored for"
+
+variable "s3_bucket_name" {
+  description = "Name of the s3 bucket to back up into"
   type        = string
-  default     = "14"
 }
