@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  tf-bash:
+    image: tf-executor-amzlnx2
+    working_dir: /opt/tf-code
+    entrypoint: /opt/tf-bash.sh
+    volumes:
+      - ../:/opt/tf-code
+    environment:
+      - AWS_REGION=eu-west-2
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_MFA_EXPIRY=${AWS_MFA_EXPIRY}
+      - AWS_OUTPUT=json
