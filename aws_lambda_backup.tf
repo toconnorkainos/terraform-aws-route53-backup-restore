@@ -20,7 +20,7 @@ resource "aws_lambda_function" "LambdaFunctionRoute53Backup" {
     }
   }
   tags = merge(
-    local.default_tags,
+    var.tags,
     map(
       "Creator", "Managed by Terraform",
     ),
@@ -43,7 +43,7 @@ resource "aws_lambda_function" "LambdaFunctionRoute53Restore" {
     }
   }
   tags = merge(
-    local.default_tags,
+    var.tags,
     map(
       "Creator", "Managed by Terraform",
     ),
@@ -55,7 +55,7 @@ resource "aws_cloudwatch_event_rule" "trigger_backup_rule" {
   description         = "Schedule to trigger route53 backup"
   schedule_expression = "rate(${var.interval} minutes)"
   tags = merge(
-    local.default_tags,
+    var.tags,
     map(
       "Creator", "Managed by Terraform",
     ),
