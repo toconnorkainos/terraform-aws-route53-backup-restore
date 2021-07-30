@@ -8,7 +8,7 @@ import route53_utils
 import logging
 
 bucket_name = os.environ.get("S3_BUCKET_NAME", None)
-aws_region = os.environ.get("AWS_REGION", "eu-west-2")
+aws_region = os.environ.get("REGION", "eu-west-2")
 s3 = boto3.client('s3')
 route53 = boto3.client('route53')
 

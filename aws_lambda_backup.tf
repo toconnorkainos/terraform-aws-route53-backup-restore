@@ -16,7 +16,7 @@ resource "aws_lambda_function" "LambdaFunctionRoute53Backup" {
   environment {
     variables = {
       S3_BUCKET_NAME = var.s3_bucket_name
-      AWS_REGION     = data.aws_region.current.name
+      REGION     = data.aws_region.current.name
     }
   }
   tags = merge(
@@ -39,7 +39,7 @@ resource "aws_lambda_function" "LambdaFunctionRoute53Restore" {
   environment {
     variables = {
       S3_BUCKET_NAME = var.s3_bucket_name
-      AWS_REGION     = data.aws_region.current.name
+      REGION     = data.aws_region.current.name
     }
   }
   tags = merge(
