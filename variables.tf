@@ -1,23 +1,17 @@
-variable "aws_profile" {
-  description = "The AWS profile from the credentials file that will be used to deploy this solution."
-  default     = "default"
-  type        = string
-}
-
-variable "region" {
-  description = "The AWS region the solution will be deployed to"
-  type        = string
-  default     = "us-east-1"
-}
-
 variable "interval" {
   description = "The interval, in minutes, of the scheduled backup."
   type        = string
   default     = "120"
 }
 
-variable "retention_period" {
-  description = "The time, in days, the backup is stored for"
+variable "s3_bucket_name" {
+  description = "Name of the s3 bucket to back up into"
   type        = string
-  default     = "14"
+}
+
+
+variable "tags" {
+  description = "(Optional) A mapping of tags to assign to the module."
+  type        = map(string)
+  default     = {}
 }
