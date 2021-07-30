@@ -2,10 +2,9 @@
 Amazon Route53 is a managed DNS web service. Route53 is often a mission critical asset in the organization. 
  
 The following tool enables:
- 1. Create route53 backup bucket 
- 2. Backup of Route53 DNS Records
- 3. Backup of Route53 Health checks
- 4. Restore capability to both of the above
+ 1. Backup of Route53 DNS Records
+ 2. Backup of Route53 Health checks
+ 3. Restore capability to both of the above
 
 ## Architecture
 ### Backup data flow
@@ -24,9 +23,7 @@ module "route53-backup-restore" {
   source            = "github.com/toconnorkainos/terraform-aws-route53-backup-restore"
   interval          = "120"
   s3_bucket_name = "NameOfAnExistingS3Bucket"
-  environment    = var.environment
-  project        = var.project
-  component      = var.component
+  tags              = {}
 }
 ``` 
 Please note that all the above values are the default values, and therefore these specific values can be omitted.
@@ -38,9 +35,8 @@ Please note that all the above values are the default values, and therefore thes
 | profile         | AWS profile, from the AWS credentials file, to be used  | default       |
 | region          | Region of resources to be deployed                      | us-east-1     |
 | interval        | Interval, in minutes, of scheduled backup               | 120 minutes   |
-| environment     | Used to form global IDs for resources                   | no default    |
-| project         | Used to form global IDs for resources                   | no default    |
-| component       |  Used to form global IDs for resources                  | no default    |
+| tags            | Map of tags to be merged into resources                 | {}            |
+
 
 
 ## Manually triggering route53 backup 
