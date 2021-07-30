@@ -15,6 +15,16 @@ data "aws_iam_policy_document" "lambda_route53_backup_policy_doc" {
       "*"
     ]
   }
+
+  statement { 
+     
+       effect = "Allow"
+       actions = ["s3:*"]
+       resources = [
+         data.aws_s3_bucket.backup_sink.arn, 
+         "${data.aws_s3_bucket.backup_sink.arn}/*"
+         ]
+  }
 }
 
 data "aws_iam_policy_document" "lambda_route53_restore_policy_doc" {
