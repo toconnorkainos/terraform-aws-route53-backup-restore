@@ -1,0 +1,22 @@
+# Starter pipeline
+
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool: ExamplePool
+
+steps:
+  - task: SonarQubePrepare@5
+    inputs:
+      SonarQube: 'Sonarqube-Sample'
+      scannerMode: 'CLI'
+      configMode: 'manual'
+      cliProjectKey: 'sample'
+  - task: SonarQubeAnalyze@5
+  - task: SonarQubePublish@5
+    inputs:
+      pollingTimeoutSec: '300'
